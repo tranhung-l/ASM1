@@ -35,6 +35,8 @@ Route::get('/table', [AdminTinController::class, 'table'])->name('table');
 Route::get('/create', [AdminTinController::class, 'create'])->name('tin.create');
 Route::post('/tin', [AdminTinController::class, 'store'])->name('tin.store');
 
+Route::get('/loaitin/create', [AdminTinController::class, 'create'])->name('loaitin.create');
+Route::post('/loaitin', [AdminTinController::class, 'store'])->name('loaitin.store');
 
 
 
