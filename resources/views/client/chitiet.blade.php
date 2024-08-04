@@ -11,7 +11,7 @@
 
                 <h1 class="the-article-title" id="title-review">{{ $tin->TieuDe }}</h1>
                 <ul class="the-article-meta">
-                    <li class="the-article-publish" id="time-review">{{ $tin->NgayDang }}</li>
+                    <li class="the-article-publish" id="time-review">{{ $tin->created_at }}</li>
                 </ul>
             </header>
             <section class="main">
@@ -26,7 +26,7 @@
                         <div>{{ $tin->NoiDung }}.<br><br>
                         </div>
                         <div>{{ $tin->NoiDung }}.<br><br><strong>{{ $tin->TenLT }}</strong><br><br><action-text-attachment
-                                {{-- sgid="eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJamhuYVdRNkx5OTFibWwzWldKemFYUmxMMEZqZEdsMlpWTjBiM0poWjJVNk9rSnNiMkl2TVRRNVAyVjRjR2x5WlhOZmFXNEdPZ1pGVkE9PSIsImV4cCI6bnVsbCwicHVyIjoiYXR0YWNoYWJsZSJ9fQ==--a90e9113135ca5e9d2947edbe67aa869e3499a72"
+                                sgid="eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJamhuYVdRNkx5OTFibWwzWldKemFYUmxMMEZqZEdsMlpWTjBiM0poWjJVNk9rSnNiMkl2TVRRNVAyVjRjR2x5WlhOZmFXNEdPZ1pGVkE9PSIsImV4cCI6bnVsbCwicHVyIjoiYXR0YWNoYWJsZSJ9fQ==--a90e9113135ca5e9d2947edbe67aa869e3499a72"
                                 content-type="{{ $tin->img }}" filename="image.png" filesize="596690" width="559"
                                 height="574" previewable="true" presentation="gallery">
                                 <figure class="attachment attachment--preview attachment--png">
@@ -167,6 +167,6 @@
                     </aside>
                 </section>
             </section>
-        </div> --}}
-    {{-- </div> --}}
+        </div> 
+    </div>
 @endsection

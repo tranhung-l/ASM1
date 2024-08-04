@@ -32,7 +32,7 @@
                     </article>
                 @endforeach
                     
-                {{-- </div>
+                </div>
                 <div data-content="newstrending" class="article-list listing-layout" id="list-second">
                     @foreach($tinLuotxem as $tin)
                     <article class="article-item type-text picked-trending short">
@@ -786,5 +786,5 @@
                 </div>
             </div>
         </section>
-    </div> --}}
+    </div>
 @endsection

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TinController;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Routing\Router;
 
 /*
 |--------------------------------------------------------------------------

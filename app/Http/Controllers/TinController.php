@@ -45,8 +45,6 @@ class TinController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('query');
-        // dd($query);
-        // Đảm bảo rằng cột 'title' khớp với cấu trúc cơ sở dữ liệu của bạn
         $results = DB::table('tin')
             ->where('TieuDe', 'like', '%' . $query . '%')
             ->get();

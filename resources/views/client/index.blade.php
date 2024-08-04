@@ -62,7 +62,7 @@
 
         <!-- CAMPAIGN COUNTDOWN -->
 
-        {{-- <section id="section-multimedia" class="section">
+        <section id="section-multimedia" class="section">
             <header class="section-title">
                 <h3>NHÂN VẬT</h3>
             </header>
@@ -785,6 +785,6 @@
                     </article>
                 </div>
             </div>
-        </section> --}}
+        </section>
     </div>
 @endsection
