@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -9,7 +10,6 @@ class TinController extends Controller
 {
     public function index()
     {
-
         return view('home');
     }
 
@@ -53,4 +53,5 @@ class TinController extends Controller
             'query' => $query
         ]);
     }
+   
 }

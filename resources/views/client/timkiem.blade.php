@@ -25,6 +25,7 @@
                                     <p class="article-summary"> {{ $item->NoiDung }}.</p>
                                 </header>
                         @endforeach
+                        
                 </div>
                 @endif
             @endsection

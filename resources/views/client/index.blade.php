@@ -1,11 +1,20 @@
 @extends('client.layout.master')
 @section('content')
     <div class="page-wrapper">
+        <div class="page-wrapper">
+            @auth
+                <h2>{{ Auth::user()->name }}</h2>
+            @else
+                <h2>Guest</h2>
+            @endauth
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <button type="submit" class="btn btn-danger mt-">logout</button>
+            </form>
         <section id="widget-ticker">
         </section>
         <section id="section-featured" class="section">
             <div class="section-content">
-
                 <div data-content="newsfeatured" class="article-list" id="list-first">
                    @foreach($tinNew as $tin)
                     <article zone-ad-name="" class="article-item znews-native type-text picked-featured">

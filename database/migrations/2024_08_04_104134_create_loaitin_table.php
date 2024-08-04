@@ -12,17 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('loaitin', function (Blueprint $table) {
-            $table->id(); // id tự động tăng
-            $table->string('TenLT'); // tên loại tin
-            $table->integer('ThuTu'); // thứ tự
-            $table->boolean('AnHien')->default(1); // ẩn hiện
-            $table->timestamps(); // thời gian tạo và cập nhật
+            $table->id();
+            $table->string('TenLT');
+            $table->integer('ThuTu');
+            $table->boolean('AnHien')->default(1);
+            $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('loaitin');
