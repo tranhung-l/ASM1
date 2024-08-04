@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminTinController;
 use App\Http\Controllers\AuthenController;
+use App\Http\Controllers\LoaiTinController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\TinController;
 use App\Http\Middleware\IsAdmin;
@@ -35,9 +36,16 @@ Route::get('/table', [AdminTinController::class, 'table'])->name('table');
 Route::get('/create', [AdminTinController::class, 'create'])->name('tin.create');
 Route::post('/tin', [AdminTinController::class, 'store'])->name('tin.store');
 
-Route::get('/loaitin/create', [AdminTinController::class, 'create'])->name('loaitin.create');
-Route::post('/loaitin', [AdminTinController::class, 'store'])->name('loaitin.store');
+Route::get('/loaitinCreate', [LoaiTinController::class, 'create'])->name('loaitin.create');
+Route::post('/loaitin', [LoaiTinController::class, 'store'])->name('loaitin.store');
 
+Route::get('tin/{id}/edit', [AdminTinController::class, 'edit'])->name('tin.edit');
+Route::post('tin/{id}', [AdminTinController::class, 'update'])->name('tin.update');
+
+Route::get('loaitin/{id}/edit', [LoaiTinController::class, 'edit'])->name('loaitin.edit');
+Route::post('loaitin/{id}', [LoaiTinController::class, 'update'])->name('loaitin.update');
+
+Route::delete('loaitin/{id}', [LoaiTinController::class, 'destroy'])->name('loaitin.destroy');
 
 
 

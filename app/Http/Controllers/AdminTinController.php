@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\LoaiTin;
 use App\Models\Tin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminTinController extends Controller
 {
@@ -14,14 +15,16 @@ class AdminTinController extends Controller
     }
     public function table()
     {
-        return view('admin.indexTable');
+        $loaitin = LoaiTin::all();
+        $tin = Tin::all();
+        return view('admin.indexTable', compact('loaitin', 'tin'));
     }
 
 
     public function create()
     {
         $loaitin = LoaiTin::all();
-        return view('admin.create', compact('loaitin'));
+        return view('admin.tin.create', compact('loaitin'));
     }
 
     public function store(Request $request)
@@ -40,7 +43,7 @@ class AdminTinController extends Controller
         $tin->NoiDung = $request->NoiDung;
         $tin->idLT = $request->idLT;
         $tin->TenLT = LoaiTin::find($request->idLT)->TenLT;
-        $tin->luotxem = $request->luotxem;
+        $tin->luotxem = $request->luotxem ?? 0;
 
         if ($request->hasFile('img')) {
             $imagePath = $request->file('img')->store('images', 'public');
@@ -49,6 +52,44 @@ class AdminTinController extends Controller
 
         $tin->save();
 
-        return redirect()->route('admin.index')->with('success', 'Tin created successfully.');
+        return redirect()->route('table')->with('success', 'Tin created successfully.');
+    }
+    public function edit($id)
+    {
+        $tin = Tin::findOrFail($id);
+        $loaitin = LoaiTin::all();
+        return view('admin.tin.edit', compact('tin', 'loaitin'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'TieuDe' => 'required',
+            'TomTat' => 'required',
+            'NoiDung' => 'required',
+            'idLT' => 'required|exists:loaitin,id',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $tin = Tin::findOrFail($id);
+        $tin->TieuDe = $request->TieuDe;
+        $tin->TomTat = $request->TomTat;
+        $tin->NoiDung = $request->NoiDung;
+        $tin->idLT = $request->idLT;
+        $tin->TenLT = LoaiTin::find($request->idLT)->TenLT;
+        $tin->luotxem = $request->luotxem ?? 0;
+
+        if ($request->hasFile('img')) {
+            // Xóa ảnh cũ nếu có
+            if ($tin->img) {
+                Storage::disk('public')->delete($tin->img);
+            }
+            $imagePath = $request->file('img')->store('images', 'public');
+            $tin->img = $imagePath;
+        }
+
+        $tin->save();
+
+        return redirect()->route('table')->with('success', 'Tin updated successfully.');
     }
 }

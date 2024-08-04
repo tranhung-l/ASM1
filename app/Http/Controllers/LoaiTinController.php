@@ -9,7 +9,7 @@ class LoaiTinController extends Controller
 {
     public function create()
     {
-        return view('loaitin.create');
+        return view('admin.LoaiTin.create');
     }
 
     public function store(Request $request)
@@ -22,6 +22,33 @@ class LoaiTinController extends Controller
 
         LoaiTin::create($request->all());
 
-        return redirect()->route('loaitin.index')->with('success', 'Loại tin created successfully.');
+        return redirect()->route('table')->with('success', 'Loại tin created successfully.');
     }
+    public function edit($id)
+    {
+        $loaitin = LoaiTin::findOrFail($id);
+        return view('admin.LoaiTin.edit', compact('loaitin'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'TenLT' => 'required|string|max:255',
+            'ThuTu' => 'required|integer',
+            'AnHien' => 'required|boolean',
+        ]);
+
+        $loaitin = LoaiTin::findOrFail($id);
+        $loaitin->update($request->all());
+
+        return redirect()->route('table')->with('success', 'Loại tin updated successfully.');
+    }
+    public function destroy($id)
+    {
+        $loaitin = LoaiTin::findOrFail($id);
+        $loaitin->delete();
+
+        return redirect()->route('table')->with('success', 'Loại tin deleted successfully.');
+    }
+        
 }
