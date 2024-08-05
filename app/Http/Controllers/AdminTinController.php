@@ -54,6 +54,7 @@ class AdminTinController extends Controller
 
         return redirect()->route('table')->with('success', 'Tin created successfully.');
     }
+
     public function edit($id)
     {
         $tin = Tin::findOrFail($id);
@@ -91,5 +92,12 @@ class AdminTinController extends Controller
         $tin->save();
 
         return redirect()->route('table')->with('success', 'Tin updated successfully.');
+    }
+    public function destroy($id)
+    {
+        $tin = Tin::findOrFail($id);
+        $tin->delete();
+
+        return redirect()->route('table')->with('success', 'Loại tin deleted successfully.');
     }
 }

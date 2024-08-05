@@ -17,6 +17,8 @@
                                       <thead>
                                           <tr>
                                               <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                  ID</th>
+                                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                   Tiêu Đề</th>
                                               <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                   Hình ảnh</th>
@@ -44,7 +46,6 @@
                                       <tbody>
                                         @foreach ($tin as $t)
                                             
-                                      
                                           <tr>
                                               <td>
                                                   <p class="text-sm font-weight-bold mb-0">{{ $t->id }}</p>
@@ -70,10 +71,16 @@
                                               <td>
                                                   <p class="text-sm font-weight-bold mb-0">{{ $t->updated_at }}</p>
                                               </td>
-                                              <td class="align-middle">
-                                                <button type="button" class="btn btn-outline-danger">Xóa</button>
-                                                <button type="button" class="btn btn-outline-warning">Edit</button>
-                                              </td>
+                                              <td>
+                                                <a href="{{ route('tin.edit', $t->id) }}" class="btn btn-warning mt-3">Edit</a>
+                
+                                                <form action="{{ route('tin.destroy', $t->id) }}" method="POST">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit" onclick="return confirm('Are you sure!')"
+                                                        class="btn btn-danger mt-3">Delete</button>
+                                                </form>
+                                            </td>
                                           </tr>
                                           @endforeach
 
@@ -137,13 +144,15 @@
                                                   <td>
                                                       <p class="text-sm font-weight-bold mb-0">{{ $loai->updated_at }}</p>
                                                   </td>
-                                                  <td class="align-middle">
-                                                    <form action="{{ route('loaitin.destroy', ['id' => $loaitin->id]) }}" method="POST" style="display:inline;">
-                                                        @csrf
+                                                  <td>
+                                                    <a href="{{ route('loaitin.edit', $loai->id) }}" class="btn btn-warning mt-3">Edit</a>
+                    
+                                                    <form action="{{ route('loaitin.destroy', $loai->id) }}" method="POST">
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-outline-danger">Xóa</button>
+                                                        @csrf
+                                                        <button type="submit" onclick="return confirm('Are you sure!')"
+                                                            class="btn btn-danger mt-3">Delete</button>
                                                     </form>
-                                                    <a href="{{ route('loaitin.edit', ['id' => $loaitin->id]) }}" type="button" class="btn btn-outline-warning">Edit</a>
                                                 </td>
                                               </tr>
                                           @endforeach

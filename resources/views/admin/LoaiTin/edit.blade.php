@@ -1,4 +1,3 @@
-
 <div class="container">
     <h2>Chỉnh sửa Loại Tin</h2>
     <form action="{{ route('loaitin.update', $loaitin->id) }}" method="POST">

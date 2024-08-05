@@ -1,4 +1,3 @@
-
 <div class="container">
     <h2>Thêm mới Tin</h2>
     <form action="{{ route('tin.store') }}" method="POST" enctype="multipart/form-data">

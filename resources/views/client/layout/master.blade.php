@@ -14,6 +14,7 @@
     @yield('content')
 
 
+
     <footer id="footer">
         @include('client.layout.partails.foot')
 

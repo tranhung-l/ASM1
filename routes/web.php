@@ -9,7 +9,7 @@ use App\Http\Controllers\TinController;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsMember;
 use Illuminate\Support\Facades\Route;
-use Symfony\Component\Routing\Router;
+use Symfony\Component\Routing\Router; 
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +45,8 @@ Route::post('tin/{id}', [AdminTinController::class, 'update'])->name('tin.update
 Route::get('loaitin/{id}/edit', [LoaiTinController::class, 'edit'])->name('loaitin.edit');
 Route::post('loaitin/{id}', [LoaiTinController::class, 'update'])->name('loaitin.update');
 
-Route::delete('loaitin/{id}', [LoaiTinController::class, 'destroy'])->name('loaitin.destroy');
+Route::delete('loaitin/{id}', [AdminTinController::class, 'destroy'])->name('loaitin.destroy');
+Route::delete('tin/{id}', [AdminTinController::class, 'destroy'])->name('tin.destroy');
 
 
 
@@ -62,6 +63,6 @@ Route::get('member', [MemberController::class, 'dashboard'])
     ->name('member.dashboard')
     ->middleware(['auth', IsMember::class]);
 
-Route::get('admin', [AdminController::class, 'dashboard'])
+Route::get('admin/table', [AdminController::class, 'dashboard'])
     ->name('admin.dashboard')
     ->middleware(['auth', IsAdmin::class]);

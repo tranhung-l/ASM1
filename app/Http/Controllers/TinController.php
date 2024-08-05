@@ -21,7 +21,7 @@ class TinController extends Controller
     }
 
     public function tin()
-    {
+    {   
         $tinNew  = DB::table('tin')->take(4)->get();
         $tinLuotxem = DB::table('tin')
             ->orderByDesc('luotxem')

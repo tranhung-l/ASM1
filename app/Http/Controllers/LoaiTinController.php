@@ -37,7 +37,6 @@ class LoaiTinController extends Controller
             'ThuTu' => 'required|integer',
             'AnHien' => 'required|boolean',
         ]);
-
         $loaitin = LoaiTin::findOrFail($id);
         $loaitin->update($request->all());
 
