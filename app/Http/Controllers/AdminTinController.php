@@ -81,7 +81,6 @@ class AdminTinController extends Controller
         $tin->luotxem = $request->luotxem ?? 0;
 
         if ($request->hasFile('img')) {
-            // Xóa ảnh cũ nếu có
             if ($tin->img) {
                 Storage::disk('public')->delete($tin->img);
             }

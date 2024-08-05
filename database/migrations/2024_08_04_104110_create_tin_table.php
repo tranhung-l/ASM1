@@ -12,15 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tin', function (Blueprint $table) {
-            $table->id(); // id tự động tăng
-            $table->string('TieuDe'); // tiêu đề
-            $table->text('TomTat'); // tóm tắt
-            $table->longText('NoiDung'); // nội dung
-            $table->unsignedBigInteger('idLT'); // khóa ngoại loại tin
-            $table->string('TenLT'); // tên loại tin
-            $table->string('img')->nullable(); // hình ảnh
-            $table->integer('luotxem')->default(0); // lượt xem
-            $table->timestamps(); // thời gian tạo và cập nhật
+            $table->id(); 
+            $table->string('TieuDe'); 
+            $table->text('TomTat'); 
+            $table->longText('NoiDung'); 
+            $table->unsignedBigInteger('idLT'); 
+            $table->string('TenLT'); 
+            $table->string('img')->nullable(); 
+            $table->integer('luotxem')->default(0); 
+            $table->timestamps(); 
         });
     }
 

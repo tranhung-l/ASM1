@@ -9,7 +9,7 @@ class Tin extends Model
 {
     use HasFactory;
 
-    protected $table = 'tin'; // Tên bảng trong cơ sở dữ liệu
+    protected $table = 'tin';
 
     protected $fillable = ['TieuDe', 'TomTat', 'NoiDung', 'img', 'luotxem', 'user_id'];
 }
